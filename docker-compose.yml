@@ -1,0 +1,106 @@
+version: "3.8"
+
+services:
+
+  eureka:
+    image: eureka:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "8761:8761"
+    networks:
+      - my-network
+
+  articles:
+    image: articles:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "2111:2111"
+    environment:
+      EUREKA_SERVER_URL: "http://eureka:8761/eureka"
+    networks:
+      - my-network
+    depends_on:
+      - eureka
+
+  authors:
+    image: authors:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "2112:2112"
+    environment:
+      EUREKA_SERVER_URL: "http://eureka:8761/eureka"
+    networks:
+      - my-network
+    depends_on:
+      - eureka
+
+  notifications:
+    image: notifications:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "2113:2113"
+    environment:
+      EUREKA_SERVER_URL: "http://eureka:8761/eureka"
+    networks:
+      - my-network
+    depends_on:
+      - eureka
+
+  authorization:
+    image: authorization:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "4000:4000"
+    environment:
+      EUREKA_SERVER_URL: "http://eureka:8761/eureka"
+    networks:
+      - my-network
+    depends_on:
+      - eureka
+
+  gateway:
+    image: gateway:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+      - "3000:3000"
+    environment:
+      EUREKA_SERVER_URL: "http://eureka:8761/eureka"
+    networks:
+      - my-network
+    depends_on:
+      - eureka
+      - articles
+      - authors
+      - authorization
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOO_JUTE_MAXBUFFER: 1819553139
+    ports:
+      - 22181:2181
+    networks:
+      - my-network
+  
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - 29092:29092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - my-network
+
+
+networks:
+  my-network:
+    driver: bridge

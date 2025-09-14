@@ -1,0 +1,13 @@
+@import 'colors.scss';
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  font-size: 16px;
+  color: $twitter-dark-gray;
+  background-color: $twitter-black;
+  padding-top: 2rem;
+}

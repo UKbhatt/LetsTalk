@@ -1,0 +1,70 @@
+@import '../../../../../colors';
+
+.article-delete__modal {
+  position: fixed;
+  top: -10%;
+  left: 38%;
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  z-index: 9999;
+}
+
+.article-delete__modal-content {
+  background-color: $twitter-black-hover;
+  color: $twitter-white;
+  padding: 20px;
+  border-radius: 1rem;
+
+  h4 {
+    font-size: 1.4rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .article-delete__actions {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .article-delete__btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .article-delete__btn-confirm {
+    background-color: $twitter-red;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: $twitter-white;
+
+    &:hover {
+      background-color: $twitter-red-hover;
+    }
+  }
+
+  .article-delete__btn-cancel {
+    background-color: $twitter-black;
+    color: $twitter-white;
+    font-size: 1rem;
+    border: 1px solid $twitter-dark-gray;
+  }
+}
+
+.overlay-delete {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $twitter-black-alpha;
+  display: none;
+  z-index: 5;
+}

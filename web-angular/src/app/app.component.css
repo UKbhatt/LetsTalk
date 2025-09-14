@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/* Domyślne style dla małych ekranów (mobile) */
+#background {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
+
+#background navigation-board {
+  top: 2rem;
+  left: 0;
+  position: fixed;
+  width: 5rem;
+  padding-left: 1rem;
+}
+
+#background main#main-board {
+  min-width: 15rem;
+  width: 100%;
+  padding-left: 9rem;
+}
+
+#background main#main-board articles {
+  flex-direction: column;
+}
+
+#background main#main-board search-board {
+  display: none;
+}
+
+/* Style dla większych ekranów (desktop) */
+@media screen and (min-width: 860px) {
+  #background {
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  #background navigation-board {
+    position: sticky;
+    top: 2rem;
+    left: 0;
+    width: 5rem;
+  }
+
+  #background main#main-board {
+    padding-right: 1rem;
+    padding-left: 5rem;
+    max-width: 40rem;
+  }
+
+  #background main#main-board articles {
+    flex-direction: row; /* lub inną kierunkowość */
+  }
+
+  #background main#main-board search-board {
+    display: flex;
+    position: sticky;
+    top: 2rem;
+    right: 0;
+    padding-right: 1rem;
+    width: 12rem;
+  }
+}
+
+/*# sourceMappingURL=app.component.css.map */

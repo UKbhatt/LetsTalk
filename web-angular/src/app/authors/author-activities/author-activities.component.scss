@@ -1,0 +1,56 @@
+@import '../../../colors.scss';
+
+.activity-card {
+  background-color: $twitter-black;
+  border: 1px solid #444;
+  box-sizing: border-box;
+  color: $twitter-white;
+  display: block;
+  padding: 0 0.8rem;
+  overflow: hidden;
+
+  &:last-child {
+    margin-bottom: 0;
+    border-bottom: 1px solid #444;
+  }
+
+  &__message {
+    text-align: left;
+  }
+
+  &__name {
+    font-weight: 700;
+    text-align: left;
+  }
+
+  &__target-name {
+    font-weight: bold;
+    text-align: left;
+  }
+
+  &__content {
+    text-align: justify;
+    color: $twitter-dark-gray;
+  }
+
+  label {
+    color: $twitter-white;
+    margin-right: 0.5rem;
+  }
+
+  select {
+    background-color: $twitter-black;
+    color: $twitter-white;
+    border: 1px solid $twitter-dark-gray;
+    padding: 0.2rem;
+    margin-right: 0.5rem;
+  }
+
+  button {
+    background-color: $twitter-black;
+    color: $twitter-white;
+    border: 1px solid $twitter-dark-gray;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+}

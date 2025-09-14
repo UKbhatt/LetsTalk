@@ -1,0 +1,9 @@
+<div id="background">
+  <button (click)="changeLanguage()" id="language-button">{{ 'LANGUAGE' | translate}}</button>
+  <navigation-board></navigation-board>
+  <main id="main-board">
+    <router-outlet></router-outlet>
+  </main>
+  <search-board></search-board>
+</div>
+

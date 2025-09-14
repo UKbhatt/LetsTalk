@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pl.jakubtworek</groupId>
+    <artifactId>Social-Media-App</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Social-Media-App</name>
+    <description>Modular monolith</description>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>Articles</module>
+        <module>Authors</module>
+        <module>authorization</module>
+        <module>notifications</module>
+        <module>eureka</module>
+        <module>gateway</module>
+        <module>common</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.1.6</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

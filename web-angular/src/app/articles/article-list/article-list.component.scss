@@ -1,0 +1,17 @@
+@import '../../../colors.scss';
+
+.show-more-articles-btn {
+  background-color: $twitter-blue;
+  color: $twitter-white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $twitter-blue-hover;
+  }
+}

@@ -1,0 +1,49 @@
+/* navigation-board.component.scss */
+@import '../../colors.scss';
+
+.button-container button {
+  width: 11rem;
+  padding: 0.5rem 0.8rem;
+  margin: 0.1rem 0;
+  font-size: 1rem;
+  color: $twitter-white;
+  background-color: $twitter-black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-out;
+  text-align: left;
+
+  &:hover {
+    background-color: $twitter-black-hover;
+  }
+}
+
+.user-info-container {
+  left: -5rem;
+  width: 12rem;
+  background-color: $twitter-black;
+  color: $twitter-white;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.full-name {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.username {
+  font-size: 1.1rem;
+  color: $twitter-dark-gray;
+  margin: 0.2rem 0 0.8rem;
+}
+
+.follow {
+  font-size: 0.9rem;
+  margin: 0.1rem 0;
+}

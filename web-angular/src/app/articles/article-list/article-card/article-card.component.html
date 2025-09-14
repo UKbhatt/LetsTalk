@@ -1,0 +1,25 @@
+<article class="article-card">
+  <div class="article-card__header">
+    <p [routerLink]="['/authors/', article.author.id]" class="article-card__author-name">
+      {{ article.author.firstName }} {{ article.author.lastName }}
+      <span class="article-card__author-username">@{{ article.author.username }} &bull; {{ article.elapsed }}</span>
+    </p>
+  </div>
+  <p [routerLink]="['/home/', article.id]" class="article-card__content">{{ article.text }}</p>
+  <p class="article-card__article-id">{{ article.id }}</p>
+  <div class="article-card__actions">
+    <p class="article-card__like-container" id="article-card__like-container-{{article.id}}">
+      <span (click)="likeArticle(article.id)"
+            (mouseenter)="showLikes(article.id)"
+            (mouseleave)="hideLikes(article.id)"
+            class="article-card__like-button"
+            id="like-button-{{article.id}}">❤️</span>
+      <span class="article-card__likes" id="likes-{{article.id}}">{{ article.likes.users.length }}</span>
+    </p>
+
+    <p [routerLink]="['/home/', article.id]" class="article-card__comment-container">
+      <span class="article-card__comment-button">🗨</span>
+      <span class="article-card__comments" id="comments-{{article.id}}">{{ article.numOfComments }}</span>
+    </p>
+  </div>
+</article>

@@ -1,0 +1,42 @@
+<article #modal class="article-details">
+  <div class="article-details__header">
+    <p [routerLink]="['/authors/', article.author.id]" class="article-details__author-name">
+      {{ article.author.firstName }} {{ article.author.lastName }}
+      <span class="article-details__author-username">@{{ article.author.username }} &bull; {{ article.elapsed }}</span>
+    </p>
+    <button (click)="followOrUnfollowAuthor(article.author.id)" *ngIf="this.article.author.username != getUsername()"
+            class="article-details__follow-button">
+      {{ article.author.isFollowed ? ('UNFOLLOW' | translate) : ('FOLLOW' | translate) }}
+    </button>
+  </div>
+  <textarea #contentTextarea [readonly]="!canModify()" class="article-details__content"
+            id="content-{{article.id}}">{{ article.text }}</textarea>
+  <p class="article-details__date-create">{{ article.createDate }}</p>
+  <p class="article-details__article-id">{{ article.id }}</p>
+  <div class="article-details__actions">
+    <p class="article-details__like-container" id="article-details__like-container-{{article.id}}">
+      <span (click)="likeArticle(article.id)"
+            (mouseenter)="showLikes(article.id)"
+            (mouseleave)="hideLikes(article.id)"
+            class="article-details__like-button"
+            id="like-button-{{article.id}}">❤️</span>
+      <span class="article-details__likes" id="likes-{{article.id}}">{{ article.likes.users.length }}</span>
+    </p>
+    <p [routerLink]="['/home/', article.id]" class="article-details__comment-container">
+      <span class="article-details__comment-button">🗨</span>
+      <span class="article-details__comments" id="comments-{{article.id}}">{{ article.comments.length }}</span>
+    </p>
+    <a (click)="openOptionsList()" *ngIf="canModify()" class="article-details__more-button">⋯</a>
+    <div *ngIf="showOptions" class="article-details__more-options">
+      <a (click)="openDeleteModal()" *ngIf="canModify()"
+         class="article-details__delete-link">{{ 'DELETE' | translate }}</a>
+      <a (click)="save()" *ngIf="canModify()" class="article-details__edit-link">{{ 'SAVE' | translate }}</a>
+    </div>
+  </div>
+</article>
+<article-post [motherArticleId]="this.article.id"
+              [placeholderText]="'Replying to @' + this.article.author.username"></article-post>
+<article-delete (cancelled)="onArticleDeleteCancelled()"
+                (confirmed)="onArticleDeleteConfirmed(article.id)"></article-delete>
+
+<div #overlay (click)="close()" class="overlay"></div>
